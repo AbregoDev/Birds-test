@@ -25,12 +25,10 @@ export class AppComponent implements OnInit {
     }
 
     calificar() {
-        this.isCommonNameCorrect =
-            this.commonNameAnswer.trim().toLowerCase() === this.bird.commonName.toLowerCase();
-
-        this.isScientificNameCorrect =
-            this.scientificNameAnswer.trim().toLowerCase() === this.bird.scientificName.toLowerCase();
-
+        const { commonName, scientificName } = this.bird;
+        
+        this.isCommonNameCorrect = this.areEquivalentStrings(this.commonNameAnswer, commonName);
+        this.isScientificNameCorrect = this.areEquivalentStrings(this.scientificNameAnswer, scientificName);
         this.answered = true;
     }
 
@@ -61,6 +59,23 @@ export class AppComponent implements OnInit {
         this.isLoading = false;
         
         return birdsData[randomIndex];
+    }
+
+    areEquivalentStrings(s1: string, s2: string): boolean {
+        s1 = s1.trim().toLowerCase()
+            .replaceAll('á', 'a')
+            .replaceAll('é', 'e')
+            .replaceAll('í', 'i')
+            .replaceAll('ó', 'o')
+            .replaceAll('ú', 'u');
+        s2 = s2.trim().toLowerCase()
+            .replaceAll('á', 'a')
+            .replaceAll('é', 'e')
+            .replaceAll('í', 'i')
+            .replaceAll('ó', 'o')
+            .replaceAll('ú', 'u');
+
+        return s1 === s2;
     }
 
     getImagePath(fileName: string): string {
