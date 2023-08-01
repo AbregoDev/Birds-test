@@ -21,6 +21,7 @@
 }
 
 .bird-image img {
+    border-radius: 8px;
     max-height: 50vh;
     max-width: 100%;
 }
