@@ -1,29 +1,35 @@
 <div class="container">
     <h1 class="title">Birds test</h1>
 
-    <img class="bird-image" [src]="getImagePath(bird.imgName)">
+    <div class="bird-image">
+        <img [src]="getImagePath(bird.imgName)">
+    </div>
 
     <div class="questions">
-        <label>Nombre común</label>
-        <input id="common-name-input" type="text" [(ngModel)]="commonNameAnswer">
-        <div *ngIf="answered">
-            <p class="right" *ngIf="isCommonNameCorrect; else wrongCommonName">Correcto!</p>
-            <ng-template #wrongCommonName>
-                <p class="wrong" *ngIf="!isCommonNameCorrect">
-                    Incorrecto. La respuesta es "{{ bird.commonName }}"
-                </p>
-            </ng-template>
+        <div class="common-name-section question-section">
+            <label>Nombre común</label>
+            <input id="common-name-input" type="text" [(ngModel)]="commonNameAnswer">
+            <div *ngIf="answered">
+                <p class="right" *ngIf="isCommonNameCorrect; else wrongCommonName">Correcto!</p>
+                <ng-template #wrongCommonName>
+                    <p class="wrong" *ngIf="!isCommonNameCorrect">
+                        Incorrecto. La respuesta es "{{ bird.commonName }}"
+                    </p>
+                </ng-template>
+            </div>
         </div>
 
-        <label>Nombre científico</label>
-        <input id="scientific-name-input" type="text" [(ngModel)]="scientificNameAnswer">
-        <div *ngIf="answered">
-            <p class="right" *ngIf="isScientificNameCorrect; else wrongSciName">Correcto!</p>
-            <ng-template #wrongSciName>
-                <p class="wrong" *ngIf="!isScientificNameCorrect">
-                    Incorrecto. La respuesta es <span>"{{ bird.scientificName }}"</span>
-                </p>
-            </ng-template>
+        <div class="scientific-name-question question-section">
+            <label>Nombre científico</label>
+            <input id="scientific-name-input" type="text" [(ngModel)]="scientificNameAnswer">
+            <div *ngIf="answered">
+                <p class="right" *ngIf="isScientificNameCorrect; else wrongSciName">Correcto!</p>
+                <ng-template #wrongSciName>
+                    <p class="wrong" *ngIf="!isScientificNameCorrect">
+                        Incorrecto. La respuesta es <span>"{{ bird.scientificName }}"</span>
+                    </p>
+                </ng-template>
+            </div>
         </div>
     </div>
 
