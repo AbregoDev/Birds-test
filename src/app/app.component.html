@@ -1,30 +1,34 @@
 <div class="container">
-    <h1>Birds test</h1>
+    <h1 class="title">Birds test</h1>
 
-    <div class="form">
-        <img [src]="'assets/' + bird.imgName">
+    <img class="bird-image" [src]="getImagePath(bird.imgName)">
 
-        <div class="fields">
-            <label>Nombre común</label>
-            <input id="common-name-input" type="text" [(ngModel)]="commonNameAnswer">
-            <div *ngIf="answered">
-                <p class="right" *ngIf="isCommonNameCorrect">Correcto!</p>
+    <div class="questions">
+        <label>Nombre común</label>
+        <input id="common-name-input" type="text" [(ngModel)]="commonNameAnswer">
+        <div *ngIf="answered">
+            <p class="right" *ngIf="isCommonNameCorrect; else wrongCommonName">Correcto!</p>
+            <ng-template #wrongCommonName>
                 <p class="wrong" *ngIf="!isCommonNameCorrect">
                     Incorrecto. La respuesta es "{{ bird.commonName }}"
                 </p>
-            </div>
-            
-            <label>Nombre científico</label>
-            <input id="scientific-name-input" type="text" [(ngModel)]="scientificNameAnswer">
-            <div *ngIf="answered">
-                <p class="right" *ngIf="isScientificNameCorrect">Correcto!</p>
+            </ng-template>
+        </div>
+
+        <label>Nombre científico</label>
+        <input id="scientific-name-input" type="text" [(ngModel)]="scientificNameAnswer">
+        <div *ngIf="answered">
+            <p class="right" *ngIf="isScientificNameCorrect; else wrongSciName">Correcto!</p>
+            <ng-template #wrongSciName>
                 <p class="wrong" *ngIf="!isScientificNameCorrect">
                     Incorrecto. La respuesta es <span>"{{ bird.scientificName }}"</span>
                 </p>
-            </div>
-
-            <button (click)="calificar()">Calificar</button>
-            <button (click)="siguiente()" [disabled]="isLoading || full">Siguiente</button>
+            </ng-template>
         </div>
+    </div>
+
+    <div class="actions">
+        <button (click)="calificar()">Calificar</button>
+        <button (click)="siguiente()" [disabled]="isLoading || full">Siguiente</button>
     </div>
 </div>

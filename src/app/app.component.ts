@@ -62,4 +62,8 @@ export class AppComponent implements OnInit {
         
         return birdsData[randomIndex];
     }
+
+    getImagePath(fileName: string): string {
+        return 'assets/' + fileName;
+    }
 }

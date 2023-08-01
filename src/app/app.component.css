@@ -3,6 +3,11 @@
     font-size: 14pt;
 }
 
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
 h1 {
     font-size: 20pt;
 }
