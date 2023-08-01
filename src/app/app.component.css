@@ -1,0 +1,52 @@
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14pt;
+}
+
+h1 {
+    font-size: 20pt;
+}
+
+img {
+    width: 500px;
+    height: 600px;
+    object-fit: scale-down;
+}
+
+.form {
+    display: flex;
+}
+
+.fields {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 400px;
+    margin-left: 30px;
+}
+
+.fields input[type="text"] {
+    width: 400px;
+}
+
+#scientific-name-input {
+    font-style: italic;
+}
+
+.fields button {
+    width: 140px;
+}
+
+.right {
+    color: green;
+    font-weight: bold;
+}
+
+.wrong {
+    color: red;
+    font-weight: bold;
+}
+
+.wrong span {
+    font-style: italic;
+}

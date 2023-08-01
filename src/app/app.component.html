@@ -1,0 +1,30 @@
+<div class="container">
+    <h1>Birds test</h1>
+
+    <div class="form">
+        <img [src]="'assets/' + bird.imgName">
+
+        <div class="fields">
+            <label>Nombre común</label>
+            <input id="common-name-input" type="text" [(ngModel)]="commonNameAnswer">
+            <div *ngIf="answered">
+                <p class="right" *ngIf="isCommonNameCorrect">Correcto!</p>
+                <p class="wrong" *ngIf="!isCommonNameCorrect">
+                    Incorrecto. La respuesta es "{{ bird.commonName }}"
+                </p>
+            </div>
+            
+            <label>Nombre científico</label>
+            <input id="scientific-name-input" type="text" [(ngModel)]="scientificNameAnswer">
+            <div *ngIf="answered">
+                <p class="right" *ngIf="isScientificNameCorrect">Correcto!</p>
+                <p class="wrong" *ngIf="!isScientificNameCorrect">
+                    Incorrecto. La respuesta es <span>"{{ bird.scientificName }}"</span>
+                </p>
+            </div>
+
+            <button (click)="calificar()">Calificar</button>
+            <button (click)="siguiente()" [disabled]="isLoading || full">Siguiente</button>
+        </div>
+    </div>
+</div>
